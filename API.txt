@@ -1,0 +1,40 @@
+API taverna_barbara
+===================
+
+==============> Spawnar criaturas na taverna <==============
+Esse mod pode ser usado para spawnar criaturas/personagens 
+dentro das tavernas. Todos as tavernas podem ter 3 tipos 
+de carpetes:
+	*Marrom (macronodes:carpete_marrom)
+	*Cinza Escuro (macronodes:carpete_cinzaescuro)
+	*Vermelho (macronodes:carpete_vermelho)
+Portanto, o personagem deve poder aparecer nos 3 tipos, 
+pois eles sinalizam a area da taverna onde mobs devem 
+surgir/spawnar. Compativel com o cme (creatures MOB-Engine)
+Cuidado pois os mobs podem acabar saindo pela porta e se 
+afastar da taverna (tenha em mente essa possibilidade ao 
+definir um comportamento para ele)
+============================================================
+
+
+=================> Estrutura das tavernas <=================
+Devem ter exatos 12 blocos de cada lado e altura de 15 
+blocos.
+Deve conter os carpetes abaixo para definir areas de spawn
+de personagens para outros mods:
+	*Marrom (macronodes:carpete_marrom)
+	*Cinza Escuro (macronodes:carpete_cinzaescuro)
+	*Vermelho (macronodes:carpete_vermelho)
+Usar o bau do trambiqueiro e o piso do barman nos lugares 
+corretos.
+Serializar com o comando auxiliar no arquivo comandos.lua
+e usar o nome taverna no arquivo da taverna serializada 
+com um numero na extensão sempre continuando a sequencia.
+Exemplo:
+	taverna_barbara_1.mts
+	taverna_barbara_2.mts
+	taverna_barbara_3.mts
+	taverna_barbara_4.mts
+Finalmente coloque o numero de estruturas de tavernas no 
+arquivo diretrizes.lua para que reconheça o limite.
+============================================================
