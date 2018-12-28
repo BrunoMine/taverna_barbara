@@ -22,6 +22,11 @@ local modpath = minetest.get_modpath("taverna_barbara")
 -- Variavel global
 taverna_barbara = {}
 
+-- Plagen
+taverna_barbara.plagen = dofile(modpath.."/lib/plagen.lua")
+
+dofile(modpath.."/tradutor.lua")
+
 -- Carregar scripts
 notificar("Carregando...")
 dofile(modpath.."/diretrizes.lua")
@@ -30,6 +35,6 @@ dofile(modpath.."/craftitens.lua")
 dofile(modpath.."/nodes.lua")
 dofile(modpath.."/barman.lua")
 dofile(modpath.."/trambiqueiro.lua")
-dofile(modpath.."/comandos.lua")
+dofile(modpath.."/carpete.lua")
 dofile(modpath.."/mapgen.lua")
 notificar("OK")

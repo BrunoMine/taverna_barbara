@@ -324,7 +324,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	end
 	
 	-- Planificar area
-	if plagen.planificar(pos, "quadrada", 14, 40, {solo=node.name, subsolo="default:dirt", rocha="default:stone"}, 6, true, true) == false then 
+	if taverna_barbara.plagen.planificar(pos, "quadrada", 14, 40, {solo=node.name, subsolo="default:dirt", rocha="default:stone"}, 6, true, true) == false then 
 		return false
 	end
 	

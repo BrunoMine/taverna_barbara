@@ -25,8 +25,9 @@ minetest.register_craftitem("taverna_barbara:cerveja", {
 		return itemstack
 	end,
 })
-hbhunger.register_food("taverna_barbara:cerveja", 4, "macronodes:garrafa_vidro", nil, 2, "taverna_barbara_bebendo_garrafa_de_vidro")
-
+if hbhunger then
+	hbhunger.register_food("taverna_barbara:cerveja", 4, "macronodes:garrafa_vidro", nil, 2, "taverna_barbara_bebendo_garrafa_de_vidro")
+end
 
 -- Whisky
 minetest.register_craftitem("taverna_barbara:whisky", {
@@ -43,8 +44,9 @@ minetest.register_craftitem("taverna_barbara:whisky", {
 		return itemstack
 	end,
 })
-hbhunger.register_food("taverna_barbara:whisky", 5, "macronodes:garrafa_vidro", nil, 4, "taverna_barbara_bebendo_garrafa_de_vidro")
-
+if hbhunger then
+	hbhunger.register_food("taverna_barbara:whisky", 5, "macronodes:garrafa_vidro", nil, 4, "taverna_barbara_bebendo_garrafa_de_vidro")
+end
 
 -- Amendoim Crocante
 minetest.register_craftitem("taverna_barbara:amendoim", {
@@ -53,7 +55,9 @@ minetest.register_craftitem("taverna_barbara:amendoim", {
 	stack_max = 20,
 	on_use = core.item_eat(2),
 })
-hbhunger.register_food("taverna_barbara:amendoim", 20, nil, nil, nil, "taverna_barbara_comendo_amendoim")
+if hbhunger then
+	hbhunger.register_food("taverna_barbara:amendoim", 20, nil, nil, nil, "taverna_barbara_comendo_amendoim")
+end
 
 -- Balinha Sortida
 minetest.register_craftitem("taverna_barbara:balinha_sortida", {
@@ -63,8 +67,9 @@ minetest.register_craftitem("taverna_barbara:balinha_sortida", {
 	stack_max = 20,
 	on_use = core.item_eat(0)
 })
-hbhunger.register_food("taverna_barbara:balinha_sortida", 0, nil, nil, nil, "taverna_barbara_balinha_sortida")
-
+if hbhunger then
+	hbhunger.register_food("taverna_barbara:balinha_sortida", 0, nil, nil, nil, "taverna_barbara_balinha_sortida")
+end
 
 -- Batanoura Defumada (Cruzamento de Batata com Cenoura)
 minetest.register_craftitem("taverna_barbara:batanoura_defumada", {
@@ -73,4 +78,6 @@ minetest.register_craftitem("taverna_barbara:batanoura_defumada", {
 	stack_max = 10,
 	on_use = core.item_eat(4)
 })
-hbhunger.register_food("taverna_barbara:batanoura_defumada", 4)
+if hbhunger then
+	hbhunger.register_food("taverna_barbara:batanoura_defumada", 4)
+end
