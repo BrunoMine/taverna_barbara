@@ -1,1 +1,1 @@
-barman.lua carpete.lua craftitens.lua nodes.lua protetor.lua trambiqueiro.lua
+barman.lua carpete.lua craftitens.lua nodes.lua trambiqueiro.lua

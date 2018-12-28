@@ -46,7 +46,7 @@ local SACIAMENTO_CERVEJA = tonumber(minetest.settings:get("taverna_barbara_sacia
 local SACIAMENTO_WHISKY = tonumber(minetest.settings:get("taverna_barbara_saciamento_whisky") or 5)
 local SACIAMENTO_BATANOURA_DEFUMADA = tonumber(minetest.settings:get("taverna_barbara_saciamento_batanoura_defumada") or 4)
 local SACIAMENTO_AMENDOIM = tonumber(minetest.settings:get("taverna_barbara_saciamento_amendoim") or 1)
-local SACIAMENTO_BALINHA_SORTIDA = tonumber(minetest.settings:get("taverna_barbara_saciamento_balinha_sortida") or 0)
+local SACIAMENTO_BALINHA_SORTIDA = tonumber(minetest.settings:get("taverna_barbara_saciamento_balinha_sortida") or tonumber(0))
 
 -- Trocas oferecidas pelos trambiqueiros 
 --[[
@@ -80,7 +80,7 @@ taverna_barbara.custo_cerveja = CUSTO_CERVEJA
 taverna_barbara.custo_whisky = CUSTO_WHISKY
 taverna_barbara.custo_batanoura_defumada = CUSTO_BATANOURA_DEFUMADA
 taverna_barbara.custo_amendoim = CUSTO_AMENDOIM
-taverna_barbara.custo_balinha_sortida = CUSTO_BOLINHA_SORTIDA
+taverna_barbara.custo_balinha_sortida = CUSTO_BALINHA_SORTIDA
 taverna_barbara.saciamento_cerveja = SACIAMENTO_CERVEJA
 taverna_barbara.saciamento_whisky = SACIAMENTO_WHISKY
 taverna_barbara.saciamento_batanoura_defumada = SACIAMENTO_BATANOURA_DEFUMADA

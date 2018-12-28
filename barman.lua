@@ -1,6 +1,6 @@
 --[[
 	Mod Taverna_Barbara para Minetest
-	Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
+	Copyright (C) 2018 BrunoMine (https://github.com/BrunoMine)
 	
 	Recebeste uma cópia da GNU Lesser General
 	Public License junto com esse software,
@@ -11,6 +11,9 @@
 	Script para criar, atraves da MOB-Engine CME,
 	o NPC barman que atende os jogadores na taverna barbara
 ]]
+
+-- Tradução de strings
+local S = taverna_barbara.S
 
 -- Encurtamento de variaveis uteis
 local item_moeda = taverna_barbara.item_moeda
@@ -61,7 +64,7 @@ local def = {
 	on_rightclick = function(self, clicker) -- mostra menu do barman
 		minetest.show_formspec(clicker:get_player_name(), "taverna_barbara:barman", 
 			"size[9,4]"
-			.."label[0,0;BARMAN]"
+			.."label[0,0;"..S("BARMAN").."]"
 			.."label[0,0.5;"..taverna_barbara.custo_cerveja.." "..taverna_barbara.item_moeda_code.."]"
 			.."label[3,0.5;"..taverna_barbara.custo_whisky.." "..taverna_barbara.item_moeda_code.."]"
 			.."label[6,0.5;"..taverna_barbara.custo_batanoura_defumada.." "..taverna_barbara.item_moeda_code.."]"
@@ -112,7 +115,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 				local desc_moeda = taverna_barbara.desc_item_moeda
 				minetest.chat_send_player(
 					player:get_player_name(), 
-					"Voce precisa de "..tostring(custo).." "..desc_moeda.." para comprar "..desc_item)
+					S("Voce precisa de @1 @2 para comprar @3", tostring(custo), desc_moeda, desc_item))
 				return
 			end
 			
@@ -124,7 +127,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 				local desc_item = minetest.registered_items["taverna_barbara:whisky"].description
 				minetest.chat_send_player(
 					player:get_player_name(), 
-					"Voce precisa de "..tostring(custo).." "..desc_item_moeda.." para comprar "..desc_item)
+					S("Voce precisa de @1 @2 para comprar @3", tostring(custo), desc_item_moeda, desc_item))
 				return
 			end
 			
@@ -136,7 +139,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 				local desc_item = minetest.registered_items["taverna_barbara:batanoura_defumada"].description
 				minetest.chat_send_player(
 					player:get_player_name(), 
-					"Voce precisa de "..tostring(custo).." "..desc_item_moeda.." para comprar "..desc_item)
+					S("Voce precisa de @1 @2 para comprar @3", tostring(custo), desc_item_moeda, desc_item))
 				return
 			end
 			
@@ -147,7 +150,7 @@ end)
 
 -- Node Piso do barman
 minetest.register_node("taverna_barbara:piso_barman", {
-	description = "Piso de Barman",
+	description = S("Piso de Barman"),
 	tiles = {
 		"default_pine_wood.png^taverna_barbara_piso_barman.png",
 	},

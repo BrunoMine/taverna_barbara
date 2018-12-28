@@ -15,7 +15,7 @@ local S = taverna_barbara.S
 
 -- Carpete de palha
 minetest.register_node("taverna_barbara:carpete", {
-	description = S("Carpete de Taverna Barbara"),
+	description = S("Carpete de Taverna Bárbara"),
 	tiles = {"wool_red.png"},
 	drawtype = "nodebox",
 	paramtype = "light",

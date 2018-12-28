@@ -1,6 +1,6 @@
 --[[
 	Mod Taverna_Barbara para Minetest
-	Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
+	Copyright (C) 2018 BrunoMine (https://github.com/BrunoMine)
 	
 	Recebeste uma cópia da GNU Lesser General
 	Public License junto com esse software,
@@ -18,6 +18,9 @@
 	Fonte: http://minetest.fensta.bplaced.net/
 	Data: 8/Jul/2016
 ]]
+
+-- Tradução de strings
+local S = taverna_barbara.S
 
 -- Atalho para diretrizes
 local diretrizes = taverna_barbara.trambiqueiro

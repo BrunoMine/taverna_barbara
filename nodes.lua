@@ -1,6 +1,6 @@
 --[[
 	Mod Taverna_Barbara para Minetest
-	Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
+	Copyright (C) 2018 BrunoMine (https://github.com/BrunoMine)
 	
 	Recebeste uma cópia da GNU Lesser General
 	Public License junto com esse software,
@@ -10,9 +10,16 @@
 	
   ]]
 
+-- Tradução de strings
+local S = taverna_barbara.S
+
+-- Encurtamento de variaveis uteis
+local item_moeda = taverna_barbara.item_moeda
+local desc_item_moeda = taverna_barbara.desc_item_moeda
+
 -- Placa da taverna barbara
 minetest.register_node("taverna_barbara:placa", {
-	description = "Placa de Taverna Barbara",
+	description = S("Placa de Taverna Bárbara"),
 	drawtype = "nodebox",
 	tiles = {
 		"taverna_barbara_placa_lado.png", -- Cima
@@ -48,7 +55,7 @@ minetest.register_node("taverna_barbara:placa", {
 })
 
 minetest.register_node("taverna_barbara:expositor_amendoim", {
-	description = "Expositor de Amendoim Crocante",
+	description = S("Expositor de Amendoim Crocante"),
 	tiles = {
 		"default_pine_wood.png^taverna_barbara_expositor_amendoim_cima.png", -- Cima
 		"default_pine_wood.png", -- Baixo
@@ -81,7 +88,7 @@ minetest.register_node("taverna_barbara:expositor_amendoim", {
 	sounds = default.node_sound_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("infotext", "Amendoim Crocante") -- infotext pode ser serializado
+		meta:set_string("infotext", S("Amendoim Crocante")) -- infotext pode ser serializado
 	end,
 	on_rightclick = function(pos, node, player)
 		minetest.show_formspec(player:get_player_name(), "taverna_barbara:expositor_amendoim", 
@@ -94,7 +101,7 @@ minetest.register_node("taverna_barbara:expositor_amendoim", {
 		
 -- Expositor de Balinhas
 minetest.register_node("taverna_barbara:expositor_balinhas", {
-	description = "Expositor de Balinhas",
+	description = S("Expositor de Balinhas"),
 	tiles = {
 		"default_pine_wood.png^taverna_barbara_expositor_balinhas_cima.png", -- Cima
 		"default_pine_wood.png^taverna_barbara_expositor_balinhas_baixo.png", -- Baixo
@@ -132,7 +139,7 @@ minetest.register_node("taverna_barbara:expositor_balinhas", {
 	sounds = default.node_sound_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("infotext", "Balinhas Sortidas") -- infotext pode ser serializado
+		meta:set_string("infotext", S("Balinhas Sortidas")) -- infotext pode ser serializado
 	end,
 	on_rightclick = function(pos, node, player)
 		minetest.show_formspec(player:get_player_name(), "taverna_barbara:expositor_balinhas", 
@@ -153,7 +160,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 				local desc_item = minetest.registered_items["taverna_barbara:balinha_sortida"].description
 				minetest.chat_send_player(
 					player:get_player_name(), 
-					"Voce precisa de "..tostring(custo).." "..desc_item_moeda.." para comprar "..desc_item)
+					S("Voce precisa de @1 @2 para comprar @3", tostring(custo), desc_item_moeda, desc_item))
 				return
 			end
 		end
@@ -166,7 +173,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 				local desc_item = minetest.registered_items["taverna_barbara:amendoim"].description
 				minetest.chat_send_player(
 					player:get_player_name(), 
-					"Voce precisa de "..tostring(custo).." "..desc_item_moeda.." para comprar "..desc_item)
+					S("Voce precisa de @1 @2 para comprar @3", tostring(custo), desc_item_moeda, desc_item))
 				return
 			end
 		end
@@ -175,7 +182,7 @@ end)
 
 -- Node Garrafa de Cerveja (decorativo)
 minetest.register_node("taverna_barbara:node_cerveja", {
-	description = "Garrafa de Cerveja",
+	description = S("Garrafa de Cerveja"),
 	tiles = {
 		"taverna_barbara_garrafa_cerveja_cima.png", -- cima
 		"taverna_barbara_garrafa_cerveja_baixo.png", -- baixo
@@ -202,7 +209,7 @@ minetest.register_node("taverna_barbara:node_cerveja", {
 
 -- Node Garrafa de Whisky (decorativo)
 minetest.register_node("taverna_barbara:node_whisky", {
-	description = "Garrafa de Whisky",
+	description = S("Garrafa de Whisky"),
 	tiles = {
 		"taverna_barbara_garrafa_whisky_cima.png", -- cima
 		"taverna_barbara_garrafa_whisky_baixo.png", -- baixo
@@ -228,7 +235,7 @@ minetest.register_node("taverna_barbara:node_whisky", {
 
 -- Fundamento da taverna
 minetest.register_node("taverna_barbara:fundamento", {
-	description = "Fundamento da Taverna",
+	description = S("Fundamento da Taverna"),
 	tiles = {"default_cobble.png"},
 	paramtype2 = "facedir",
 	is_ground_content = false,

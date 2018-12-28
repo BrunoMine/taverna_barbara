@@ -1,6 +1,6 @@
 --[[
 	Mod Taverna_Barbara para Minetest
-	Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
+	Copyright (C) 2018 BrunoMine (https://github.com/BrunoMine)
 	
 	Recebeste uma cópia da GNU Lesser General
 	Public License junto com esse software,
@@ -10,9 +10,12 @@
 	
   ]]
 
+-- Tradução de strings
+local S = taverna_barbara.S
+
 -- Cerveja
 minetest.register_craftitem("taverna_barbara:cerveja", {
-	description = "Cerveja",
+	description = S("Cerveja"),
 	inventory_image = "taverna_barbara_cerveja.png",
 	stack_max = 1,
 	on_use = core.item_eat(taverna_barbara.saciamento_cerveja),
@@ -31,7 +34,7 @@ end
 
 -- Whisky
 minetest.register_craftitem("taverna_barbara:whisky", {
-	description = "Whisky",
+	description = S("Whisky"),
 	inventory_image = "taverna_barbara_whisky.png",
 	stack_max = 1,
 	on_use = core.item_eat(taverna_barbara.saciamento_whisky),
@@ -50,7 +53,7 @@ end
 
 -- Amendoim Crocante
 minetest.register_craftitem("taverna_barbara:amendoim", {
-	description = "Amendoim Crocante",
+	description = S("Amendoim Crocante"),
 	inventory_image = "taverna_barbara_amendoim.png",
 	stack_max = 20,
 	on_use = core.item_eat(taverna_barbara.saciamento_amendoim),
@@ -61,7 +64,7 @@ end
 
 -- Balinha Sortida
 minetest.register_craftitem("taverna_barbara:balinha_sortida", {
-	description = "Balinha Sortida",
+	description = S("Balinha Sortida"),
 	inventory_image = "taverna_barbara_balinha_sortida_inv.png",
 	wield_image = "taverna_barbara_balinha_sortida.png",
 	stack_max = 20,
@@ -73,7 +76,7 @@ end
 
 -- Batanoura Defumada (Cruzamento de Batata com Cenoura)
 minetest.register_craftitem("taverna_barbara:batanoura_defumada", {
-	description = "Batanoura Defumada (Cruzamento de Batata com Cenoura)",
+	description = S("Batanoura Defumada (Cruzamento de Batata com Cenoura)"),
 	inventory_image = "taverna_barbara_batanoura_defumada.png",
 	stack_max = 10,
 	on_use = core.item_eat(taverna_barbara.saciamento_batanoura_defumada)
