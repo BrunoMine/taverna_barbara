@@ -9,7 +9,7 @@
 # 0 (%) não gera
 # 100 (%) gera sempre que possivel
 # Por padrão é 7
-taverna_barbara_custo_batanoura_defumada (Probabilidade de surgir vilas) int 7 0 100
+taverna_barbara_probabilidade_gerar_taverna (Probabilidade de surgir vilas) int 7 0 100
 
 #
 # Vendas
