@@ -22,8 +22,14 @@ local modpath = minetest.get_modpath("taverna_barbara")
 -- Variavel global
 taverna_barbara = {}
 
+-- Versao
+taverna_barbara.versao = "1"
+
 -- Plagen
 taverna_barbara.plagen = dofile(modpath.."/lib/plagen.lua")
+
+-- Tror
+taverna_barbara.tror = dofile(modpath.."/lib/tror.lua")
 
 dofile(modpath.."/tradutor.lua")
 

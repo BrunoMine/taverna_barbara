@@ -69,21 +69,21 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		
 			local self = acesso[sender_name]
 			if self.disp then
-				local sender_inv = player:get_inventory()
-				if not sender_inv:contains_item("main", self.trambique.custo[1].." "..self.trambique.custo[2]) then
-					minetest.chat_send_player(sender_name, "Voce precisa de macros para aceitar a oferta")
-					return
-				elseif not sender_inv:room_for_item("main", self.trambique.item[1].." "..self.trambique.item[2]) then
-					minetest.chat_send_player(sender_name, "Inventario Lotado")
+				
+				local item_custo = self.trambique.custo[1]
+				local custo = self.trambique.custo[2]
+				local item_oferta = self.trambique.item[1]
+				local oferta = self.trambique.item[2]
+			
+				if taverna_barbara.tror.trocar_plus(player, {item_custo.." "..custo}, {item_oferta.." "..oferta}) == false then
+					local desc_item = minetest.registered_items[item_oferta].description
+					local desc_item_custo = minetest.registered_items[item_custo].description
+					minetest.chat_send_player(
+						player:get_player_name(), 
+						"Voce precisa de "..tostring(custo).." "..desc_item_custo.." para comprar "..desc_item)
 					return
 				end
-				-- retirando itens do inventario
-				local i = 0
-				while i < tonumber(self.trambique.custo[2]) do -- 1 eh o tanto que quero tirar
-					sender_inv:remove_item("main", self.trambique.custo[1].." 1") -- tira 1 por vez
-					i = i + 1
-				end
-				sender_inv:add_item("main", self.trambique.item[1].." "..self.trambique.item[2])
+				
 				minetest.show_formspec(sender_name, "taverna_barbara:trambiqueiro", formspec_dispensa)
 				self.disp = false
 				self.trambique = sortear_trambique()

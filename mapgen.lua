@@ -75,7 +75,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	if pos_ref == nil then return end
 	
 	-- Sortear (apenas diminui a ocorrencia antes dos cálculos)
-	if math.random(1, taverna_barbara.raridade) ~= 1 then return end
+	if math.random(1, 100) > taverna_barbara.probabilidade_gen then return end
 	
 	
 	--[[
@@ -324,7 +324,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	end
 	
 	-- Planificar area
-	if taverna_barbara.plagen.planificar(pos, "quadrada", 14, 40, {solo=node.name, subsolo="default:dirt", rocha="default:stone"}, 6, true, true) == false then 
+	if taverna_barbara.plagen.planificar(pos, "quadrada", 13, 40, {solo=node.name, subsolo="default:dirt", rocha="default:stone"}, 6, true, true) == false then 
 		return false
 	end
 	
@@ -332,8 +332,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	
 	-- Proteger area
 	taverna_barbara.proteger_area(
-		taverna_barbara.gerente_areas, 
-		taverna_barbara.gerente_areas, 
+		"Taverna_Barbara:Taverna", 
 		"Taverna Barbara", 
 		{x=pos.x-20, y=pos.y-15, z=pos.z-20}, 
 		{x=pos.x+20, y=pos.y+2000, z=pos.z+20}, 
@@ -343,8 +342,13 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	-- Montar taverna
 	local numero_arquivo = math.random(1, taverna_barbara.qtd_arquivos)
 	minetest.place_schematic({x=pos.x-6,y=pos.y,z=pos.z-6}, modpath.."/estruturas/taverna_barbara_"..numero_arquivo..".mts", nil, nil, true)
-		
-
+	
+	-- Fundamento
+	minetest.set_node(pos, {name="taverna_barbara:fundamento"})
+	local meta = minetest.get_meta(pos)
+	meta:set_string("versao", taverna_barbara.versao)
+	meta:set_string("numero_schem", numero_arquivo)
+	
 	return true
 	
 end)

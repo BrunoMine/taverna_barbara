@@ -15,7 +15,7 @@ definir um comportamento para ele)
 
 
 =================> Estrutura das tavernas <=================
-Devem ter exatos 12 blocos de cada lado e altura de 15 
+Devem ter exatos 13 blocos de cada lado e altura de 15 
 blocos.
 Deve conter o carpete especifico para tavernas 
 (itemstring: taverna_barbara:carpete)

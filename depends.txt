@@ -2,6 +2,5 @@ default
 hbhunger?
 creatures
 vessels
-macromoney
-areas?
+areas
 wool

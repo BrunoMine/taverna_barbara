@@ -15,7 +15,7 @@ minetest.register_craftitem("taverna_barbara:cerveja", {
 	description = "Cerveja",
 	inventory_image = "taverna_barbara_cerveja.png",
 	stack_max = 1,
-	on_use = core.item_eat(4),
+	on_use = core.item_eat(taverna_barbara.saciamento_cerveja),
 	on_place = function(itemstack, placer, pointed_thing)
 		if minetest.is_protected(pointed_thing.above, placer:get_player_name()) == false then
 			minetest.set_node(pointed_thing.above, {name="taverna_barbara:node_cerveja"})
@@ -26,7 +26,7 @@ minetest.register_craftitem("taverna_barbara:cerveja", {
 	end,
 })
 if hbhunger then
-	hbhunger.register_food("taverna_barbara:cerveja", 4, "macronodes:garrafa_vidro", nil, 2, "taverna_barbara_bebendo_garrafa_de_vidro")
+	hbhunger.register_food("taverna_barbara:cerveja", taverna_barbara.saciamento_cerveja, "macronodes:garrafa_vidro", nil, 2, "taverna_barbara_bebendo_garrafa_de_vidro")
 end
 
 -- Whisky
@@ -34,7 +34,7 @@ minetest.register_craftitem("taverna_barbara:whisky", {
 	description = "Whisky",
 	inventory_image = "taverna_barbara_whisky.png",
 	stack_max = 1,
-	on_use = core.item_eat(5),
+	on_use = core.item_eat(taverna_barbara.saciamento_whisky),
 	on_place = function(itemstack, placer, pointed_thing)
 		if minetest.is_protected(pointed_thing.above, placer:get_player_name()) == false then
 			minetest.set_node(pointed_thing.above, {name="taverna_barbara:node_whisky"})
@@ -45,7 +45,7 @@ minetest.register_craftitem("taverna_barbara:whisky", {
 	end,
 })
 if hbhunger then
-	hbhunger.register_food("taverna_barbara:whisky", 5, "macronodes:garrafa_vidro", nil, 4, "taverna_barbara_bebendo_garrafa_de_vidro")
+	hbhunger.register_food("taverna_barbara:whisky", taverna_barbara.saciamento_whisky, "macronodes:garrafa_vidro", nil, 4, "taverna_barbara_bebendo_garrafa_de_vidro")
 end
 
 -- Amendoim Crocante
@@ -53,10 +53,10 @@ minetest.register_craftitem("taverna_barbara:amendoim", {
 	description = "Amendoim Crocante",
 	inventory_image = "taverna_barbara_amendoim.png",
 	stack_max = 20,
-	on_use = core.item_eat(2),
+	on_use = core.item_eat(taverna_barbara.saciamento_amendoim),
 })
 if hbhunger then
-	hbhunger.register_food("taverna_barbara:amendoim", 20, nil, nil, nil, "taverna_barbara_comendo_amendoim")
+	hbhunger.register_food("taverna_barbara:amendoim", taverna_barbara.saciamento_amendoim, nil, nil, nil, "taverna_barbara_comendo_amendoim")
 end
 
 -- Balinha Sortida
@@ -65,10 +65,10 @@ minetest.register_craftitem("taverna_barbara:balinha_sortida", {
 	inventory_image = "taverna_barbara_balinha_sortida_inv.png",
 	wield_image = "taverna_barbara_balinha_sortida.png",
 	stack_max = 20,
-	on_use = core.item_eat(0)
+	on_use = core.item_eat(taverna_barbara.saciamento_balinha_sortida)
 })
 if hbhunger then
-	hbhunger.register_food("taverna_barbara:balinha_sortida", 0, nil, nil, nil, "taverna_barbara_balinha_sortida")
+	hbhunger.register_food("taverna_barbara:balinha_sortida", taverna_barbara.saciamento_balinha_sortida, nil, nil, nil, "taverna_barbara_balinha_sortida")
 end
 
 -- Batanoura Defumada (Cruzamento de Batata com Cenoura)
@@ -76,8 +76,8 @@ minetest.register_craftitem("taverna_barbara:batanoura_defumada", {
 	description = "Batanoura Defumada (Cruzamento de Batata com Cenoura)",
 	inventory_image = "taverna_barbara_batanoura_defumada.png",
 	stack_max = 10,
-	on_use = core.item_eat(4)
+	on_use = core.item_eat(taverna_barbara.saciamento_batanoura_defumada)
 })
 if hbhunger then
-	hbhunger.register_food("taverna_barbara:batanoura_defumada", 4)
+	hbhunger.register_food("taverna_barbara:batanoura_defumada", taverna_barbara.saciamento_batanoura_defumada)
 end

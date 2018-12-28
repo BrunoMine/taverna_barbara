@@ -12,6 +12,10 @@
 	o NPC barman que atende os jogadores na taverna barbara
 ]]
 
+-- Encurtamento de variaveis uteis
+local item_moeda = taverna_barbara.item_moeda
+local desc_item_moeda = taverna_barbara.desc_item_moeda
+
 local def = {
 	
 	-- Geral
@@ -58,9 +62,9 @@ local def = {
 		minetest.show_formspec(clicker:get_player_name(), "taverna_barbara:barman", 
 			"size[9,4]"
 			.."label[0,0;BARMAN]"
-			.."label[0,0.5;3 macros]"
-			.."label[3,0.5;4 macros]"
-			.."label[6,0.5;2 macros]"
+			.."label[0,0.5;"..taverna_barbara.custo_cerveja.." "..taverna_barbara.item_moeda_code.."]"
+			.."label[3,0.5;"..taverna_barbara.custo_whisky.." "..taverna_barbara.item_moeda_code.."]"
+			.."label[6,0.5;"..taverna_barbara.custo_batanoura_defumada.." "..taverna_barbara.item_moeda_code.."]"
 			.."item_image_button[0,1;3,3;taverna_barbara:cerveja;cerveja;]"
 			.."item_image_button[3,1;3,3;taverna_barbara:whisky;whisky;]"
 			.."item_image_button[6,1;3,3;taverna_barbara:batanoura_defumada;batanoura_defumada;]"
@@ -100,58 +104,42 @@ creatures.register_mob(def)
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "taverna_barbara:barman" then
 		if fields.cerveja then
-			local sender_name = player:get_player_name()
-			local sender_inv = player:get_inventory()
-			if not sender_inv:contains_item("main", "macromoney:macro 3") then
-				minetest.chat_send_player(sender_name, "Voce precisa de macros para comprar Cerveja")
-				return
-			elseif not sender_inv:room_for_item("main", "taverna_barbara:cerveja 1") then
-				minetest.chat_send_player(sender_name, "Inventario Lotado")
+			
+			local custo = taverna_barbara.custo_cerveja
+			
+			if taverna_barbara.tror.trocar_plus(player, {taverna_barbara.item_moeda.." "..custo}, {"taverna_barbara:cerveja 1"}) == false then
+				local desc_item = minetest.registered_items["taverna_barbara:cerveja"].description
+				local desc_moeda = taverna_barbara.desc_item_moeda
+				minetest.chat_send_player(
+					player:get_player_name(), 
+					"Voce precisa de "..tostring(custo).." "..desc_moeda.." para comprar "..desc_item)
 				return
 			end
-			-- retirando itens do inventario
-			local i = 0
-			while i < tonumber(3) do -- 1 eh o tanto que quero tirar
-				sender_inv:remove_item("main", "macromoney:macro 1") -- tira 1 por vez
-				i = i + 1
-			end
-			sender_inv:add_item("main", "taverna_barbara:cerveja 1")
 			
 		elseif fields.whisky then
-			local sender_name = player:get_player_name()
-			local sender_inv = player:get_inventory()
-			if not sender_inv:contains_item("main", "macromoney:macro 4") then
-				minetest.chat_send_player(sender_name, "Voce precisa de macros para comprar Whisky")
-				return
-			elseif not sender_inv:room_for_item("main", "taverna_barbara:whisky 1") then
-				minetest.chat_send_player(sender_name, "Inventario Lotado")
+			
+			local custo = taverna_barbara.custo_whisky
+			
+			if taverna_barbara.tror.trocar_plus(player, {item_moeda.." "..custo}, {"taverna_barbara:whisky 1"}) == false then
+				local desc_item = minetest.registered_items["taverna_barbara:whisky"].description
+				minetest.chat_send_player(
+					player:get_player_name(), 
+					"Voce precisa de "..tostring(custo).." "..desc_item_moeda.." para comprar "..desc_item)
 				return
 			end
-			-- retirando itens do inventario
-			local i = 0
-			while i < tonumber(4) do -- 1 eh o tanto que quero tirar
-				sender_inv:remove_item("main", "macromoney:macro 1") -- tira 1 por vez
-				i = i + 1
-			end
-			sender_inv:add_item("main", "taverna_barbara:whisky 1")
 			
 		elseif fields.batanoura_defumada then
-			local sender_name = player:get_player_name()
-			local sender_inv = player:get_inventory()
-			if not sender_inv:contains_item("main", "macromoney:macro 2") then
-				minetest.chat_send_player(sender_name, "Voce precisa de macros para comprar Batanoura Defumada")
-				return
-			elseif not sender_inv:room_for_item("main", "taverna_barbara:batanoura_defumada 1") then
-				minetest.chat_send_player(sender_name, "Inventario Lotado")
+			
+			local custo = taverna_barbara.custo_batanoura_defumada
+			
+			if taverna_barbara.tror.trocar_plus(player, {item_moeda.." "..custo}, {"taverna_barbara:batanoura_defumada 1"}) == false then
+				local desc_item = minetest.registered_items["taverna_barbara:batanoura_defumada"].description
+				minetest.chat_send_player(
+					player:get_player_name(), 
+					"Voce precisa de "..tostring(custo).." "..desc_item_moeda.." para comprar "..desc_item)
 				return
 			end
-			-- retirando itens do inventario
-			local i = 0
-			while i < tonumber(2) do -- 1 eh o tanto que quero tirar
-				sender_inv:remove_item("main", "macromoney:macro 1") -- tira 1 por vez
-				i = i + 1
-			end
-			sender_inv:add_item("main", "taverna_barbara:batanoura_defumada 1")
+			
 		end
 	end
 end)

@@ -146,41 +146,29 @@ minetest.register_node("taverna_barbara:expositor_balinhas", {
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "taverna_barbara:expositor_balinhas" then
 		if fields.comprar then
-			local sender_name = player:get_player_name()
-			local sender_inv = player:get_inventory()
-			if not sender_inv:contains_item("main", "currency:macro 1") then
-				minetest.chat_send_player(sender_name, "Voce precisa de macros para comprar Balinha Sortida")
-				return
-			elseif not sender_inv:room_for_item("main", "taverna_barbara:balinha_sortida 1") then
-				minetest.chat_send_player(sender_name, "Inventario Lotado")
+			
+			local custo = taverna_barbara.custo_balinha_sortida
+			
+			if taverna_barbara.tror.trocar_plus(player, {item_moeda.." "..custo}, {"taverna_barbara:balinha_sortida 1"}) == false then
+				local desc_item = minetest.registered_items["taverna_barbara:balinha_sortida"].description
+				minetest.chat_send_player(
+					player:get_player_name(), 
+					"Voce precisa de "..tostring(custo).." "..desc_item_moeda.." para comprar "..desc_item)
 				return
 			end
-			-- retirando itens do inventario
-			local i = 0
-			while i < tonumber(1) do -- 1 eh o tanto que quero tirar
-				sender_inv:remove_item("main", "currency:macro 1") -- tira 1
-				i = i + 1
-			end
-			sender_inv:add_item("main", "taverna_barbara:balinha_sortida 1")
 		end
 	elseif formname == "taverna_barbara:expositor_amendoim" then
 		if fields.comprar then
-			local sender_name = player:get_player_name()
-			local sender_inv = player:get_inventory()
-			if not sender_inv:contains_item("main", "currency:macro 1") then
-				minetest.chat_send_player(sender_name, "Voce precisa de macros para comprar Amendoim Crocante")
-				return
-			elseif not sender_inv:room_for_item("main", "taverna_barbara:amendoim 1") then
-				minetest.chat_send_player(sender_name, "Inventario Lotado")
+			
+			local custo = taverna_barbara.custo_amendoim
+			
+			if taverna_barbara.tror.trocar_plus(player, {item_moeda.." "..custo}, {"taverna_barbara:amendoim 1"}) == false then
+				local desc_item = minetest.registered_items["taverna_barbara:amendoim"].description
+				minetest.chat_send_player(
+					player:get_player_name(), 
+					"Voce precisa de "..tostring(custo).." "..desc_item_moeda.." para comprar "..desc_item)
 				return
 			end
-			-- retirando itens do inventario
-			local i = 0
-			while i < tonumber(1) do -- 1 eh o tanto que quero tirar
-				sender_inv:remove_item("main", "currency:macro 1") -- tira 1
-				i = i + 1
-			end
-			sender_inv:add_item("main", "taverna_barbara:amendoim 1")
 		end
 	end
 end)
@@ -236,5 +224,22 @@ minetest.register_node("taverna_barbara:node_whisky", {
 	drop = "taverna_barbara:whisky",
 	groups = {attached_node=1,choppy=2,dig_immediate=3,not_in_creative_inventory=1},
 	sounds = default.node_sound_defaults(),
+})
+
+-- Fundamento da taverna
+minetest.register_node("taverna_barbara:fundamento", {
+	description = "Fundamento da Taverna",
+	tiles = {"default_cobble.png"},
+	paramtype2 = "facedir",
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 1,not_in_creative_inventory=1},
+	sounds = default.node_sound_wood_defaults(),
+	drop = {},
+	
+	-- Nao pode ser escavado/quebrado por jogadores
+	on_dig = function() end,
+	
+	-- Impede explosão
+	on_blast = function() end,
 })
 
