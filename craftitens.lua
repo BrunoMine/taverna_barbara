@@ -29,7 +29,7 @@ minetest.register_craftitem("taverna_barbara:cerveja", {
 	end,
 })
 if hbhunger then
-	hbhunger.register_food("taverna_barbara:cerveja", taverna_barbara.saciamento_cerveja, "macronodes:garrafa_vidro", nil, 2, "taverna_barbara_bebendo_garrafa_de_vidro")
+	hbhunger.register_food("taverna_barbara:cerveja", taverna_barbara.saciamento_cerveja, "vessels:glass_bottle", nil, 2, "taverna_barbara_bebendo_garrafa_de_vidro")
 end
 
 -- Whisky
@@ -48,7 +48,7 @@ minetest.register_craftitem("taverna_barbara:whisky", {
 	end,
 })
 if hbhunger then
-	hbhunger.register_food("taverna_barbara:whisky", taverna_barbara.saciamento_whisky, "macronodes:garrafa_vidro", nil, 4, "taverna_barbara_bebendo_garrafa_de_vidro")
+	hbhunger.register_food("taverna_barbara:whisky", taverna_barbara.saciamento_whisky, "vessels:glass_bottle", nil, 4, "taverna_barbara_bebendo_garrafa_de_vidro")
 end
 
 -- Amendoim Crocante
