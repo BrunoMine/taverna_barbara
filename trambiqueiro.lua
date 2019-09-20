@@ -178,7 +178,12 @@ local def = {
 			end
 			
 			-- Remove se tem mais de 1 por perto
-			if table.maxn(creatures.findTarget(nil, self.object:getpos(), 10, "mate", "taverna_barbara:trambiqueiro", true, false)) > 1 then
+			if table.maxn(creatures.find_target(self.object:getpos(), 10, {
+				search_type = "mate",
+				mob_name = "taverna_barbara:trambiqueiro",
+				xray = true,
+				no_count = false
+			})) > 1 then
 		                self.object:remove()
 		        end
 		end
@@ -241,7 +246,12 @@ minetest.register_node("taverna_barbara:bau_trambiqueiro", {
 })
 
 local verificar_trambiqueiro = function(pos)
-	if table.maxn(creatures.findTarget(nil, pos, 10, "mate", "taverna_barbara:trambiqueiro", true, false)) == 0 then
+	if table.maxn(creatures.find_target(self.object:getpos(), 10, {
+		search_type = "mate",
+		mob_name = "taverna_barbara:trambiqueiro",
+		xray = true,
+		no_count = false
+	})) == 0 then
 		local node = minetest.get_node(pos)
 		local p = minetest.facedir_to_dir(node.param2)
 		minetest.add_entity({x=pos.x-p.x,y=pos.y+1.5,z=pos.z-p.z}, "taverna_barbara:trambiqueiro")
