@@ -246,7 +246,7 @@ minetest.register_node("taverna_barbara:bau_trambiqueiro", {
 })
 
 local verificar_trambiqueiro = function(pos)
-	if table.maxn(creatures.find_target(self.object:getpos(), 10, {
+	if table.maxn(creatures.find_target(pos, 10, {
 		search_type = "mate",
 		mob_name = "taverna_barbara:trambiqueiro",
 		xray = true,
