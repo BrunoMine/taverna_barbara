@@ -100,7 +100,6 @@ end)
 local def = {
 	
 	-- Geral
-	name = "taverna_barbara:trambiqueiro",
 	stats = {
 		hp = 18,
 		lifetime = 1800, -- 30 Minutos
@@ -121,8 +120,11 @@ local def = {
 	model = {
 		mesh = "taverna_barbara_pessoa_comum.b3d",
 		textures = {"taverna_barbara_trambiqueiro.png"},
-		collisionbox = {-0.25, -1, -0.3, 0.25, 1.0, 0.3},
-		rotation = -90.0,
+		collisionbox_width = 0.7,
+		collisionbox_height = 1.8,
+		center_height = -1,
+		rotation = 0.0,
+		vision_height = 0,
 		animations = {
 			idle = {start = 0, stop = 80, speed = 15},
 			walk = {start = 168, stop = 188, speed = 15.5},
@@ -220,7 +222,7 @@ local def = {
 
 }
 
-creatures.register_mob(def)
+creatures.register_mob("taverna_barbara:trambiqueiro", def)
 
 -- Node Bau do Trambiqueiro
 minetest.register_node("taverna_barbara:bau_trambiqueiro", {

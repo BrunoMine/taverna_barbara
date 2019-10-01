@@ -22,7 +22,6 @@ local desc_item_moeda = taverna_barbara.desc_item_moeda
 local def = {
 	
 	-- Geral
-	name = "taverna_barbara:barman",
 	stats = {
 		hp = 18,
 		lifetime = 1800, -- 30 Minutos
@@ -44,8 +43,11 @@ local def = {
 	model = {
 		mesh = "taverna_barbara_pessoa_comum.b3d",
 		textures = {"taverna_barbara_barman.png"},
-		collisionbox = {-0.25, -1, -0.3, 0.25, 1.0, 0.3},
-		rotation = -90.0,
+		collisionbox_width = 0.7,
+		collisionbox_height = 1.8,
+		center_height = -1,
+		rotation = 0.0,
+		vision_height = 0,
 		animations = {
 			idle = {start = 0, stop = 80, speed = 15},
 			walk = {start = 168, stop = 188, speed = 15.5},
@@ -106,7 +108,7 @@ local def = {
 
 }
 
-creatures.register_mob(def)
+creatures.register_mob("taverna_barbara:barman", def)
 
 -- receptor dos botoes do menu do barman
 minetest.register_on_player_receive_fields(function(player, formname, fields)
